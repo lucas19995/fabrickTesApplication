@@ -140,7 +140,7 @@ public class FabrickManagerClient {
                     ListTransactionResponse.class);
         } catch(Exception e) {
             if (e instanceof HttpClientErrorException) {
-                /*HttpClientErrorException exception = (HttpClientErrorException) e;
+                HttpClientErrorException exception = (HttpClientErrorException) e;
                 ObjectMapper objectMapper = new ObjectMapper();
                 ListTransactionResponse moneyTransferResponse = objectMapper.readValue(exception.getResponseBodyAsString(),
                         ListTransactionResponse.class);
@@ -149,7 +149,7 @@ public class FabrickManagerClient {
                                 .errors
                                 .stream()
                                 .map(errorResponse -> errorResponse.code)
-                                .collect(Collectors.toList()), accountId);*/
+                                .collect(Collectors.toList()), accountId);
             }
         }
 
