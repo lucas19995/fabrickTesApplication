@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.Date;
 
 @RestController
-//@Api(value = "User credential", description = "User credential controller")
 @RequestMapping("napolil/bank")
 public interface FabrickController {
 
@@ -18,7 +17,7 @@ public interface FabrickController {
 
         @RequestMapping(value = "/money-transfers", method = RequestMethod.POST, produces = MediaType.APPLICATION_JSON_VALUE)
         ResponseEntity createPayment(
-                @RequestBody CreditorDTO creditor);
+                 @RequestBody CreditorDTO creditor);
 
         @RequestMapping(value = "/transactions", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
         ResponseEntity getTransactionsList(

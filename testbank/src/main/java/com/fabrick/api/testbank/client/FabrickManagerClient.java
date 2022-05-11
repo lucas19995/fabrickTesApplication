@@ -80,9 +80,10 @@ public class FabrickManagerClient {
     }
 
     public AccountCashResponse getAccountCash() throws Exception {
+        logger.info("Creating Url for getAccountCash using accountID: ", accountId);
         URL url = buildUrl(endpointAccount,null,accountId, null );
         HttpEntity<?> entity = initHttpEntity(null);
-
+        logger.debug("Url created for getAccountCash API: ", url.toString());
         ResponseEntity<AccountCashResponse> response = restTemplate.exchange(
                 url.toURI(),
                 HttpMethod.GET,
@@ -93,10 +94,11 @@ public class FabrickManagerClient {
     }
 
     public MoneyTransferResponse createPayment(CreditorDTO creditorDTO) throws Exception {
+        logger.info("Creating Url for createPayment using accountID: ", accountId);
         URL url = buildUrl(endpointAccount,endpointCreateMoneyTransfer,accountId, null );
         HttpEntity<?> entity = initHttpEntity(creditorDTO);
         ResponseEntity<MoneyTransferResponse> response = null;
-
+        logger.debug("Url created for createPayment API: ", url.toString());
         try {
             response = restTemplate.exchange(
                     url.toURI(),
@@ -128,9 +130,12 @@ public class FabrickManagerClient {
         params.put("fromAccountingDate", dateFormatter.format(fromAccountingDate));
         params.put("toAccountingDate", dateFormatter.format(toAccountingDate));
 
+        logger.info("Creating Url for getTransactionsList using accountID: ", accountId);
         URL url = buildUrl(endpointAccount,endpointTransactions,accountId, params);
         HttpEntity<?> entity = initHttpEntity(null);
         ResponseEntity<ListTransactionResponse> response = null;
+
+        logger.debug("Url created for getTransactionList: ", url.toString());
 
         try {
             response = restTemplate.exchange(
